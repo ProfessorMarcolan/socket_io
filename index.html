@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+
+  <body>
+    <ul id="messages_do_chat"></ul>
+   
+      <input id="men" autocomplete="off" /><button id="but">Send</button>
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    //    socket = io();
+    socket = io();
+  
+    socket.on("dados_importantes",(dados)=>{
+      console.log(dados)
+      
+      $("#messages_do_chat").append($(`<li>${dados}</li>`))
+        
+    })
+
+    $("#but").on("click", ()=> envia_dados())
+
+    function envia_dados(){
+      // cinabdi que envia mensagem a todos os socketes que tiverem conectados.
+      socket.emit("mensagem",$("#men").val())
+      $("#men").val("")
+    }
+
+
+
+
+    </script>
+  </body>
+</html>
