@@ -1,14 +1,15 @@
 {
   "name": "usando_sockets",
   "version": "1.0.0",
-  "description": "",
+  "description": "Estamos testando",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node server.js"
+    "run": "node index.js",
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "jmarcolan",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
