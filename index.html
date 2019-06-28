@@ -4,9 +4,13 @@
     <title>Socket.IO chat</title>
 
   <body>
-    <ul id="messages_do_chat"></ul>
+    <div id="painel"></div>
    
-      <input id="men" autocomplete="off" /><button id="but">Send</button>
+
+   <button id="but_1">1</button>
+
+   <button id="but_2">2</button>
+      <!-- <input id="men" autocomplete="off" /><button id="but">Send</button> -->
 
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -17,17 +21,20 @@
   
     socket.on("dados_importantes",(dados)=>{
       console.log(dados)
+
       
-      $("#messages_do_chat").append($(`<li>${dados}</li>`))
+      
+      $("#painel").html($(`<p>${dados}</p>`))
         
     })
 
-    $("#but").on("click", ()=> envia_dados())
+    $("#but_1").on("click", ()=> envia_dados(1))
+    $("#but_2").on("click", ()=> envia_dados(-1))
 
-    function envia_dados(){
+    function envia_dados(valor){
       // cinabdi que envia mensagem a todos os socketes que tiverem conectados.
-      socket.emit("mensagem",$("#men").val())
-      $("#men").val("")
+      socket.emit("mensagem",valor)
+      // $("#men").val("")
     }
 
 
